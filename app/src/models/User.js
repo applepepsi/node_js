@@ -6,10 +6,10 @@ class User{
     constructor(body){
         this.body=body;
     }
-    login()
+    async login()
     {
         const client=this.body;
-        const {id,psword} = UserStorage.getUserInfo(client.id);
+        const {id,psword}=await UserStorage.getUserInfo(client.id);
         
         if(id)
         {
@@ -21,6 +21,7 @@ class User{
         }
         return {success: false, msg:"존재하지 않는 아이디 입니다."};
     }
+
     register()
     {
         const client=this.body;
